@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basi del Linguaggio SQL</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Quaderno di Informatica</h1>
+        <p>Basi di dati e linguaggio SQL</p>
+    </header>
+
+    <div class="container">
+        <div class="content-section">
+            <h1>Concetti Base del Linguaggio SQL</h1>
+            
+            <p>SQL (Structured Query Language) è il linguaggio standard per la gestione dei database relazionali.</p>
+            
+            <h2>Cos'è SQL?</h2>
+            
+            <div class="sql-concept">
+                <p>SQL è un linguaggio dichiarativo utilizzato per:</p>
+                <ul>
+                    <li>Creare e modificare strutture di database (DDL)</li>
+                    <li>Manipolare dati (DML)</li>
+                    <li>Interrogare database (DQL)</li>
+                    <li>Controllare accessi e permessi (DCL)</li>
+                </ul>
+            </div>
+            
+            <h2>Componenti Principali di SQL</h2>
+            
+            <div class="sql-concept">
+                <h3>1. Data Definition Language (DDL)</h3>
+                <p>Comandi per definire la struttura del database:</p>
+                
+                <div class="code-block">
+                    <pre>
+<span class="sql-keyword">CREATE TABLE</span> Clienti (
+    id <span class="sql-keyword">INT PRIMARY KEY</span>,
+    nome <span class="sql-keyword">VARCHAR</span>(50),
+    email <span class="sql-keyword">VARCHAR</span>(100)
+);
+
+<span class="sql-keyword">ALTER TABLE</span> Clienti <span class="sql-keyword">ADD COLUMN</span> telefono <span class="sql-keyword">VARCHAR</span>(15);
+
+<span class="sql-keyword">DROP TABLE</span> Clienti;
+                    </pre>
+                </div>
+            </div>
+            
+            <div class="sql-concept">
+                <h3>2. Data Manipulation Language (DML)</h3>
+                <p>Comandi per manipolare i dati:</p>
+                
+                <div class="code-block">
+                    <pre>
+<span class="sql-keyword">INSERT INTO</span> Clienti (id, nome, email)
+<span class="sql-keyword">VALUES</span> (1, 'Mario Rossi', 'mario@example.com');
+
+<span class="sql-keyword">UPDATE</span> Clienti
+<span class="sql-keyword">SET</span> email = 'm.rossi@example.com'
+<span class="sql-keyword">WHERE</span> id = 1;
+
+<span class="sql-keyword">DELETE FROM</span> Clienti
+<span class="sql-keyword">WHERE</span> id = 1;
+                    </pre>
+                </div>
+            </div>
+            
+            <div class="sql-concept">
+                <h3>3. Data Query Language (DQL)</h3>
+                <p>Comandi per interrogare il database:</p>
+                
+                <div class="code-block">
+                    <pre>
+<span class="sql-keyword">SELECT</span> nome, email
+<span class="sql-keyword">FROM</span> Clienti
+<span class="sql-keyword">WHERE</span> nome <span class="sql-keyword">LIKE</span> 'Mario%'
+<span class="sql-keyword">ORDER BY</span> nome;
+
+<span class="sql-keyword">SELECT</span> c.nome, COUNT(o.id) <span class="sql-keyword">AS</span> num_ordini
+<span class="sql-keyword">FROM</span> Clienti c
+<span class="sql-keyword">LEFT JOIN</span> Ordini o <span class="sql-keyword">ON</span> c.id = o.cliente_id
+<span class="sql-keyword">GROUP BY</span> c.nome
+<span class="sql-keyword">HAVING</span> COUNT(o.id) > 5;
+                    </pre>
+                </div>
+            </div>
+            
+            <h2>Clausole SQL Fondamentali</h2>
+            
+            <div class="sql-concept">
+                <table class="sql-reference">
+                    <tr>
+                        <th>Clausola</th>
+                        <th>Descrizione</th>
+                        <th>Esempio</th>
+                    </tr>
+                    <tr>
+                        <td><span class="sql-keyword">SELECT</span></td>
+                        <td>Specifica le colonne da recuperare</td>
+                        <td><span class="sql-keyword">SELECT</span> nome, email</td>
+                    </tr>
+                    <tr>
+                        <td><span class="sql-keyword">FROM</span></td>
+                        <td>Specifica la tabella da interrogare</td>
+                        <td><span class="sql-keyword">FROM</span> Clienti</td>
+                    </tr>
+                    <tr>
+                        <td><span class="sql-keyword">WHERE</span></td>
+                        <td>Filtra i record in base a condizioni</td>
+                        <td><span class="sql-keyword">WHERE</span> età > 18</td>
+                    </tr>
+                    <tr>
+                        <td><span class="sql-keyword">GROUP BY</span></td>
+                        <td>Raggruppa i record per valori</td>
+                        <td><span class="sql-keyword">GROUP BY</span> città</td>
+                    </tr>
+                    <tr>
+                        <td><span class="sql-keyword">HAVING</span></td>
+                        <td>Filtra i gruppi</td>
+                        <td><span class="sql-keyword">HAVING</span> COUNT(*) > 10</td>
+                    </tr>
+                    <tr>
+                        <td><span class="sql-keyword">ORDER BY</span></td>
+                        <td>Ordina i risultati</td>
+                        <td><span class="sql-keyword">ORDER BY</span> cognome <span class="sql-keyword">ASC</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="sql-keyword">JOIN</span></td>
+                        <td>Combina dati da più tabelle</td>
+                        <td><span class="sql-keyword">JOIN</span> Ordini <span class="sql-keyword">ON</span> Clienti.id = Ordini.cliente_id</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <h2>Tipi di Dati Comuni in SQL</h2>
+            
+            <div class="sql-concept">
+                <ul>
+                    <li><strong>Numerici:</strong> INT, SMALLINT, DECIMAL(p,s), FLOAT</li>
+                    <li><strong>Testuali:</strong> CHAR(n), VARCHAR(n), TEXT</li>
+                    <li><strong>Data/Ora:</strong> DATE, TIME, DATETIME, TIMESTAMP</li>
+                    <li><strong>Booleani:</strong> BOOLEAN (TRUE/FALSE)</li>
+                    <li><strong>Binari:</strong> BLOB, BINARY</li>
+                </ul>
+            </div>
+            
+            <div class="btn-container">
+                <a href="index.html"><button>Torna alla Pagina Principale</button></a>
+                <a href="forme-normali.html"><button>Vedi Forme Normali</button></a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Quaderno di Informatica</p>
+        <p>&copy; 2023 Tutti i diritti riservati</p>
+    </footer>
+</body>
+</html>

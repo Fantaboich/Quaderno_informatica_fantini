@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardinalità nei Modelli Relazionali</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Quaderno di Informatica</h1>
+        <p>Basi di dati e modelli relazionali</p>
+    </header>
+
+    <div class="container">
+        <div class="content-section">
+            <h1>Cardinalità nei Modelli Relazionali</h1>
+            
+            <p>Le cardinalità definiscono i rapporti quantitativi tra entità in un modello relazionale.</p>
+            
+            <h2>Tipi di Cardinalità</h2>
+            
+            <div class="cardinality-type">
+                <h3>1 a 1 (Uno a Uno)</h3>
+                <p>Un'istanza dell'entità A è associata a una sola istanza dell'entità B e viceversa.</p>
+                <div class="code-block">
+                    <p><strong>Esempio:</strong> Persona - Patente di guida</p>
+                    <p>Ogni persona ha al massimo una patente e ogni patente è intestata a una sola persona.</p>
+                </div>
+            </div>
+            
+            <div class="cardinality-type">
+                <h3>1 a N (Uno a Molti)</h3>
+                <p>Un'istanza dell'entità A può essere associata a molte istanze dell'entità B, ma ogni istanza di B è associata a una sola istanza di A.</p>
+                <div class="code-block">
+                    <p><strong>Esempio:</strong> Dipartimento - Impiegati</p>
+                    <p>Un dipartimento può avere molti impiegati, ma ogni impiegato appartiene a un solo dipartimento.</p>
+                </div>
+            </div>
+            
+            <div class="cardinality-type">
+                <h3>N a M (Molti a Molti)</h3>
+                <p>Un'istanza dell'entità A può essere associata a molte istanze dell'entità B e viceversa.</p>
+                <div class="code-block">
+                    <p><strong>Esempio:</strong> Studenti - Corsi</p>
+                    <p>Uno studente può frequentare molti corsi e un corso può essere frequentato da molti studenti.</p>
+                </div>
+            </div>
+            
+            
+            <h2>Implementazione nel Modello Logico</h2>
+            
+            <div class="code-block">
+                <p><strong>Per relazioni 1:1:</strong> Chiave esterna in una delle due tabelle</p>
+                <p><strong>Per relazioni 1:N:</strong> Chiave esterna nella tabella del lato "N"</p>
+                <p><strong>Per relazioni N:M:</strong> Tabella di intersezione con chiavi esterne verso entrambe le tabelle</p>
+            </div>
+            
+            <div class="btn-container">
+                <a href="index.html"><button>Torna alla Pagina Principale</button></a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Quaderno di Informatica</p>
+        <p>&copy; 2023 Tutti i diritti riservati</p>
+    </footer>
+</body>
+</html>

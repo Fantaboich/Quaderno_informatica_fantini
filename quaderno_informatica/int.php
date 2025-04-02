@@ -2,7 +2,7 @@
 // Configurazione dei parametri per la connessione al database MySQL
 $servername = "localhost";  // Indirizzo del server (in questo caso, locale)
 $username = "root";         // Nome utente del database (default per MySQL)
-$password = "";             // Password del database (vuota in questo caso)
+$password = "admin";             // Password del database (vuota in questo caso)
 $database = "COMPAGNIA_AEREA";  // Nome del database a cui connettersi
 
 // Creazione della connessione al database usando l'estensione MySQLi

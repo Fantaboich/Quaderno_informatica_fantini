@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forme Normali nei Database Relazionali</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Quaderno di Informatica</h1>
+        <p>Basi di dati e progettazione relazionale</p>
+    </header>
+
+    <div class="container">
+        <div class="content-section">
+            <h1>Forme Normali nei Database Relazionali</h1>
+            
+            <p>Le forme normali sono una serie di regole che aiutano a strutturare efficientemente i database relazionali, minimizzando la ridondanza e l'anomalia dei dati.</p>
+            
+            <h2>Prima Forma Normale (1NF)</h2>
+            
+            <div class="normal-form">
+                <h3>Requisiti fondamentali:</h3>
+                <ul>
+                    <li>Ogni tabella deve avere una chiave primaria</li>
+                    <li>Non devono esistere gruppi ripetuti o array</li>
+                    <li>Tutti gli attributi devono contenere valori atomici (non divisibili)</li>
+                </ul>
+                
+                <div class="code-block">
+                    <p><strong>Esempio di non 1NF:</strong></p>
+                    <pre>
+Ordine(ID, Cliente, Prodotti)
+Prodotti = "Laptop, Mouse, Tastiera"  // Valore non atomico
+                    </pre>
+                    
+                    <p><strong>Corretto in 1NF:</strong></p>
+                    <pre>
+Ordine(ID, Cliente)
+OrdineProdotto(ID_Ordine, Prodotto)
+                    </pre>
+                </div>
+            </div>
+            
+            <h2>Seconda Forma Normale (2NF)</h2>
+            
+            <div class="normal-form">
+                <h3>Requisiti fondamentali:</h3>
+                <ul>
+                    <li>La tabella deve essere in 1NF</li>
+                    <li>Tutti gli attributi non chiave devono dipendere dall'intera chiave primaria</li>
+                    <li>Se la chiave è composta, non ci devono essere dipendenze parziali</li>
+                </ul>
+                
+                <div class="code-block">
+                    <p><strong>Esempio di non 2NF:</strong></p>
+                    <pre>
+OrdineProdotto(ID_Ordine, ID_Prodotto, NomeProdotto, Quantità)
+// NomeProdotto dipende solo da ID_Prodotto (dipendenza parziale)
+                    </pre>
+                    
+                    <p><strong>Corretto in 2NF:</strong></p>
+                    <pre>
+OrdineProdotto(ID_Ordine, ID_Prodotto, Quantità)
+Prodotto(ID_Prodotto, NomeProdotto)
+                    </pre>
+                </div>
+            </div>
+            
+            <h2>Terza Forma Normale (3NF)</h2>
+            
+            <div class="normal-form">
+                <h3>Requisiti fondamentali:</h3>
+                <ul>
+                    <li>La tabella deve essere in 2NF</li>
+                    <li>Non devono esistere dipendenze transitive (attributi non chiave che dipendono da altri attributi non chiave)</li>
+                </ul>
+                
+                <div class="code-block">
+                    <p><strong>Esempio di non 3NF:</strong></p>
+                    <pre>
+Impiegato(ID, Nome, Dipartimento, CittàSede)
+// CittàSede dipende da Dipartimento, non direttamente dall'ID
+                    </pre>
+                    
+                    <p><strong>Corretto in 3NF:</strong></p>
+                    <pre>
+Impiegato(ID, Nome, Dipartimento)
+Dipartimento(Nome, CittàSede)
+                    </pre>
+                </div>
+            </div>
+            
+            <h2>Forma Normale di Boyce-Codd (BCNF)</h2>
+            
+            <div class="normal-form">
+                <h3>Requisiti fondamentali:</h3>
+                <ul>
+                    <li>La tabella deve essere in 3NF</li>
+                    <li>Per ogni dipendenza funzionale X → Y, X deve essere una superchiave</li>
+                    <li>Elimina le dipendenze da attributi che non sono superchiavi</li>
+                </ul>
+                
+                <div class="code-block">
+                    <p><strong>Esempio di non BCNF:</strong></p>
+                    <pre>
+Corso(Studente, Professore, Materia)
+// Supponendo che ogni professore insegni una sola materia
+                    </pre>
+                    
+                    <p><strong>Corretto in BCNF:</strong></p>
+                    <pre>
+Corso(Studente, Professore)
+ProfessoreMateria(Professore, Materia)
+                    </pre>
+                </div>
+            </div>
+          <div class="btn-container">
+                <a href="index.html"><button>Vai alla Pagina Principale</button></a>
+            </div>
+            
+    </div>
+
+    <footer>
+        <p>Quaderno di Informatica</p>
+        <p>&copy; 2023 Tutti i diritti riservati</p>
+    </footer>
+</body>
+</html>
